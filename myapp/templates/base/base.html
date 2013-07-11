@@ -34,7 +34,6 @@
               <li class="dropdown">
                 <a role="button" href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.email }} <b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                  <li><a href="/settings">Settings</a></li>
                   <li><a href="/logout">Logout</a></li>
                 </ul>
               </li>
@@ -67,17 +66,18 @@
       <div class="row-fluid">
         <div class="span9">
           <div class="row-fluid">
-          {% block content %}
-          {% endblock %}
-          </div><!--/row-->
-        </div><!--/span-->
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
 
         <div class="span3">
           <div class="row-fluid">
-          {% block sidebar %}
-          {% endblock %}
+            {% block sidebar %}
+            {% endblock %}
           </div>
         </div>
+
       </div><!--/row-->
       <hr>
       <footer>

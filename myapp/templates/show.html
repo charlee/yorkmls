@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+{{ house.data|safe }}
+
+{% endblock %}
+
+{% block sidebar %}
+
+{% for picture in house.pictures %}
+<img src="http://www.torontomls.net{{ picture }}" />
+{% endfor %}
+
+{% endblock %}

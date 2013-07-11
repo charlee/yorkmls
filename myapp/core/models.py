@@ -17,6 +17,7 @@ Define common ops for data models
 
 import re
 from myapp import rds 
+from pickle import loads
 
 # Link
 
@@ -209,10 +210,15 @@ class House(BaseHash):
 
   fields = {
     'address': '',
+    'price': '',
     'town': '',
     'pictures': '',
     'data': '',         # data table for this property
   }
+
+  def __init__(self, id, *args, **kwargs):
+    super(House, self).__init__(id, *args, **kwargs)
+    self.pictures = loads(self.pictures)
 
   def ref_count(self):
     return rds.get(self.KEY_PIN_COUNT % self.id)
