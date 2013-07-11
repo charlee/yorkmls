@@ -2,6 +2,22 @@
 
 {% block content %}
 
+{% if rejected %}
+<div class="alert alert-error">You have rejected this property.</div>
+{% endif %}
+
+<div>
+<p>Address: <a href="https://maps.google.ca/maps?q={{ house.address }}" target="_blank">{{ house.address }}</a></p>
+<p>Memo:
+<input type='hidden' id='house-id' value='{{ house.id }}' />
+<textarea id="memo-input">{{ house.memo|default('',True) }}</textarea>
+<button class="btn btn-primary" id="update-memo">Update</button>
+</p>
+<p><button class="btn btn-danger reject" house_id={{ house.id }}>Reject</button></p>
+</div>
+
+<hr>
+
 {{ house.data|safe }}
 
 {% endblock %}

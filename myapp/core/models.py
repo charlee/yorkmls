@@ -18,6 +18,7 @@ Define common ops for data models
 import re
 from myapp import rds 
 from pickle import loads
+from datetime import datetime
 
 # Link
 
@@ -211,14 +212,20 @@ class House(BaseHash):
   fields = {
     'address': '',
     'price': '',
-    'town': '',
     'pictures': '',
     'data': '',         # data table for this property
+    'memo': '',
+    'add_date': '',
   }
 
   def __init__(self, id, *args, **kwargs):
     super(House, self).__init__(id, *args, **kwargs)
-    self.pictures = loads(self.pictures)
+    if self.pictures:
+      self.pictures = loads(self.pictures)
+
+    if self.add_date:
+      self.add_date = datetime.fromtimestamp(int(self.add_date)).strftime('%Y/%m/%d')
+
 
   def ref_count(self):
     return rds.get(self.KEY_PIN_COUNT % self.id)
@@ -250,6 +257,8 @@ class User(BaseHash):
   # link references(SET)
   # used by core.pin.new_pin to check if user has already pinned a link
   KEY_HOUSES = 'mls:user:%s:houses'
+  
+  KEY_REJECTED_HOUSES = 'mls:user:%s:rejected-houses'
 
   # reverse ref (email -> user id) (HASH)
   # used by login and register check
@@ -280,31 +289,41 @@ class User(BaseHash):
     """
     Add house to current user's house list
     """
-    rds.lpush(self.KEY_HOUSES % self.id, house_id)
+    rds.sadd(self.KEY_HOUSES % self.id, house_id)
 
 
   def remove_house(self, house_id):
     """
     Remove house from current user's house list
     """
-    rds.lrem(self.KEY_HOUSES % self.id, 1, house_id)
+    rds.srem(self.KEY_HOUSES % self.id, 1, house_id)
 
-
-  def houses(self, start=None, end=None):
+  def reject_house(self, house_id):
     """
-    Get [start..end) of the user's houses
+    Move house to rejected houses
     """
-    if start is None or end is None:
-      start = 0
-      end = rds.llen(self.KEY_HOUSES % self.id)
+    rds.smove(self.KEY_HOUSES % self.id, self.KEY_REJECTED_HOUSES % self.id, house_id)
 
-    return rds.lrange(self.KEY_HOUSES % self.id, start, end - 1)
+  def has_house(self, house_id):
+    """
+    Check if user has a house
+    """
+    return rds.sismember(self.KEY_HOUSES % self.id, house_id)
+
+  def houses(self):
+    """
+    Get user's houses
+    """
+    return rds.smembers(self.KEY_HOUSES % self.id)
+
+  def rejected_houses(self):
+    return rds.smembers(self.KEY_REJECTED_HOUSES % self.id)
 
 
   def house_count(self):
     """
     Get house count
     """
-    return rds.llen(self.KEY_HOUSES % self.id)
+    return rds.scard(self.KEY_HOUSES % self.id)
 
 
