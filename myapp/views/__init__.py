@@ -2,13 +2,13 @@
 
 from flask import render_template, session, request, redirect
 from myapp import app
-from core.user import current_user_id, j_require_login, require_login, url_for
-from core.models import User, House
-from core.house import run_import_houses_task
-from forms import MlsImportForm
+from myapp.core.user import current_user_id, j_require_login, require_login, url_for
+from myapp.core.models import User, House
+from myapp.core.house import run_import_houses_task
+from .forms import MlsImportForm
 from flask.ext.csrf import csrf_exempt
 
-from utils.common import make_context
+from myapp.utils.common import make_context
 
 import users
 

@@ -6,8 +6,8 @@ import re
 from lxml import etree
 from lxml.html import fromstring
 from datetime import datetime
-from core.models import User
-from core.house import new_house
+from myapp.core.models import User
+from myapp.core.house import new_house
 
 
 ADDR_ABBR = {

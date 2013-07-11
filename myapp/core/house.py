@@ -1,13 +1,13 @@
 # -*- coding: utf8 -*-
 
-from core.user import current_user_id
-from core.models import User, House
+from .user import current_user_id
+from .models import User, House
 from pickle import dumps
 import time
 
 def run_import_houses_task(url):
 
-  from queue.tasks import import_houses_task
+  from myapp.queue.tasks import import_houses_task
 
   import_houses_task.delay(current_user_id(), url)
 

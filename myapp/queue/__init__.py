@@ -78,7 +78,7 @@ def queue_daemon(app, rv_ttl=500, daemon=False):
     else:
       print "Unable to find function %s" % skey
 
-from queue import tasks
+from myapp.queue import tasks
 
 
 

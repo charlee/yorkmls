@@ -6,6 +6,7 @@
 
 <table class="table">
   <thead>
+    <th>No</th>
     <th>MLS</th>
     <th>Address</th>
     <th>Price</th>
@@ -16,6 +17,7 @@
   <tbody>
     {% for house in houses %}
     <tr>
+	  <td>{{ loop.index }}</td>
       <td><a href='/show/{{ house.id }}'>{{ house.id }}</a></td>
       <td><a href='/show/{{ house.id }}'>{{ house.address }}</a> (<a href='https://maps.google.ca/maps?q={{ house.address }}' target='_blank'>map</a>)</td>
       <td>{{ house.price }}</td>

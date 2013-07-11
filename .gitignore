@@ -45,3 +45,4 @@ nosetests.xml
 myapp/static/js/*.js
 myapp/static/css/*.css
 
+nohup.out
