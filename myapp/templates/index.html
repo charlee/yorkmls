@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h3>Favorited Properties</h3>
+{% for house in fav_houses %}
+
+<div class="pin">
+  <div class="pin-count pull-right"><span class="badge badge-info">{{ link.pin_count }}</span>people</div>
+  <div class="pin-title clearfix">
+    {% if link.icon %}
+    <img src="{{ link.icon }}" />
+    {% endif %}
+    <strong><a href="/i/{{ link.id }}" target="_blank">{{ link.title }}</a></strong>
+    {% if link.saved %}
+    <small><span class="pin-save">saved</span></small>
+    {% else %}
+    <small><a href="#" class="pin-save" link_id="{{ link.id }}">save this</a></small>
+    {% endif %}
+  </div>
+
+  <div class="pin-date pull-left"><small>{{ link.add_date }}</small></div>
+  <div class="pin-tags clearfix"></div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+

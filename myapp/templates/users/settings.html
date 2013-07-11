@@ -1,0 +1,14 @@
+{% extends 'users/settings-base.html' %}
+{% from "base/_formhelpers.html" import render_field %}
+
+{% block content %}
+
+<form method="POST" action="/settings">
+<input type='hidden' name='_csrf_token' value="{{ csrf_token() }}">
+
+{{ render_field(form.screen_name) }}
+
+<input type="submit" class="btn btn-primary" value="Save" name="" />
+</form>
+
+{% endblock %}

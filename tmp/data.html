@@ -1,0 +1,1956 @@
+<script language="javascript">
+	var imageQueryString = "";
+	var imageList = "";
+</script>
+
+
+<script language="javascript">
+
+	var ErrorImg = new Image();
+	var RightOverImg = new Image();
+	var LeftOverImg = new Image();
+	var RightImg = new Image();
+	var LeftImg = new Image();
+	
+		ErrorImg.src = '/images/PhotoNotAvailable.gif';	
+	
+
+	function doError(o)
+	{
+		if (!o) return;
+		if ((o._e * 1) > 0)
+		{
+			o._e++;
+			o.src = ErrorImg.src;
+		}
+		else
+		{
+			o._e++;
+			o.src = o._base.replace('$BASEPATH', 'MLSMULTIPHOTOS');
+		}
+		return;
+	}
+
+	function swapPhoto(o, increment)
+	{
+		if (!o) return;
+		var current = o._current;
+		var max = o._max;
+		var src;
+		current += increment;
+		current = (current < 1) ? max : current;
+		if (current > max) current = current % max;
+		o._current = current;
+		src = o._pixArray[current - 1];
+		if (src != 'noLongerNeeded')
+		{	
+			o._loadedArray[current - 1] = new Image();
+			o._loadedArray[current - 1].src = src;
+			o._pixArray[current - 1] = 'noLongerNeeded';
+		}
+		o.alt = o._commArray[current - 1];
+		document.all['div'+o._mlnum].ToolTip = o.alt;
+		o.src = o._loadedArray[current - 1].src;
+	}
+	
+	function compileImageList()
+	{
+		var tempVar;
+		var returnVar = '';
+		var picArray = imageList.split(',');
+		for(var i=0; i < picArray.length; i++)
+		{
+			if ((tempVar = picArray[i]) != '')
+			{
+				returnVar += (i > 0) ? '&' : '';
+				returnVar += tempVar + '=' + document.all[tempVar]._current;
+			}
+		}
+		return returnVar;
+	}
+	
+	function pSetBG(o, bSetBack)
+	{
+		var o = document.all['pic' + o];
+		if (o)
+		{
+			o.style.borderColor = (!bSetBack) ? '#c0c0c0' : '#707070';
+		}
+		return;
+	}
+	
+	var mlWindow = null;
+	
+	function showMLPhotos(ml)
+	{
+		mlWindow = window.open('/includes/DispMLPhotos.asp?ml_num=' + ml,'picWin','toolbar=no,status=no,menubar=yes,scrollbars=yes,width=645,height=490');
+		mlWindow.focus();
+	}
+
+</script>
+	
+</script>
+
+<html>
+<head>
+<title>Stratus Reports</title>
+<meta NAME="GENERATOR" Content="Microsoft FrontPage 3.0">
+<basefont face="Arial, Helvetica, sans-serif">
+<style>
+	<!--
+	TD				{ font-family: arial,helvetica,sans-serif; font: bold 7pt }
+	TH				{ font-family: arial,helvetica,sans-serif; font: bold 7pt; text-align: left; color: #000000; }
+	H2				{ font-family: arial,helvetica,sans-serif; font: bold 13pt;}
+	INPUT, SELECT	{ font-family: arial,helvetica,sans-serif; font: 7pt }
+	-->
+</style>
+<script language="Javascript">
+function toggleFtM(){
+	d = document.ToggleFtM;
+	d.submit();
+}
+</script>
+</head>
+
+<body>
+<form name="ToggleFtM" id="ToggleFtM" method="get" >
+<input type="hidden" name="link_no" value="252599569.112800">
+<input type="hidden" name="t" value="p">
+<p align="center"<Xsmall> Display Room Dimensions in </Xsmall>
+<select name="fm" style="font: 8pt Arial" onChange="toggleFtM();">
+  <option value="M" selected> Metres
+  <option value="F" > Feet
+</select></p>
+</form>
+
+<script event="onload" for="window" language="javascript">
+  isMac = (navigator.appVersion.indexOf("Mac")!=-1) ? true : false;
+	if (!isMac) {
+		window.resizeBy(10,10);
+		window.scrollTo(10,0);
+		window.scrollTo(0,0);
+		window.resizeBy(-10,-10);
+	}
+</script>
+
+<html>
+<head>
+<title>Stratus Data Systems</title>
+<meta NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<script language="JavaScript">
+	// Open a window for Bamboo Virtual Tour
+
+	var winopts = "toolbar=0";
+	winopts += ",location=0";
+	winopts += ",directories=0";
+	winopts += ",status=0";
+	winopts += ",menubar=0";
+	winopts += ",scrollbars=yes";
+	winopts += ",resizable=no";
+	winopts += ",height=400";
+	winopts += ",width=600";
+	winopts += ",copyhistory=0";
+
+	function ShowTour (strUrl)
+	{
+		window.open(strUrl, "Tour");
+	}
+</script>	
+<basefont face="Arial, Helvetica, sans-serif">
+</head>
+<body>
+	<center>
+	<script src="/includes/Buttons/buttons.js" type="text/javascript"></script>
+		<script>ButtonLibOver1 = new Image(); ButtonLibOver1.src = "/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Over.png";</script><script>ButtonLibDown1 = new Image(); ButtonLibDown1.src = "/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Down.png";</script><script>ButtonLibDis1 = new Image(); ButtonLibDis1.src = "/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Dis.png";</script><a href="CL_Map.asp?link_no=252599569.112800&t=p&fm=M" target="_blank" tabindex=0><img align=absmiddle border=0 alt="Map These Properties" src="/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Out.png" id=_BL1 name=_BL1 onkeypress="DoButtonCheckKey('_BL1');" style="cursor:hand;" onmousedown="this.src = '/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Down.png'; this.mouseclicked=true;" onmouseover="this.src = '/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Over.png';" onmouseup="this.src = '/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Over.png';" onmouseout="this.src = '/Includes/Buttons/Images/Clean/ffffff/cccccc/0/MapTheseProperties_Out.png'; this.mouseclicked=false;"></a>
+	</center>
+	<br />
+	
+				<table width="100%" align="center">
+					<tr>
+						<td align="center" valign="top">
+							
+<table width="650">
+	<tr>
+		<td align="center"><font size="2"><strong> Prepared by HUIJUN XUE, Salesperson<br>REAL ONE REALTY INC., BROKERAGE<br><font size=1>7225 Woodbine Ave, Unit 1, Markham, ON L3R1A3<br>905-480-1011<br>7/10/2013 </font></strong></font></td>
+	</tr>
+</table>				
+
+							<br>
+							<table width="650" border="1" bordercolor="#909090" bgcolor="#FFFFFF" cellspacing="0">
+	<tr>
+		<td rowspan="2" valign="top" bgcolor="#ffffff"><!-- GetPHOTO(Full_P) --><div id="divN2686796" style="position: relative; margin: 0; padding: 0; border: 0; background-color: #fcfcfc;" height="100%"><img id="picN2686796" OnClick="" style="position: relative; cursor: ;" OnError="this.src = ErrorImg.src;" height="168" width="225" src="/MLSMULTIPHOTOS/FULL/1/796/N2686796.jpg" alt="MLS# N2686796"><script language="JavaScript">var f = document.all['picN2686796'];f._mlnum = 'N2686796';f._current = 1;f._max = 9;f._pixArray = new Array('/MLSPHOTOS/FULL/1/796/N26867961.jpg','/MLSMULTIPHOTOS/FULL/2/796/N2686796_2.jpg','/MLSMULTIPHOTOS/FULL/3/796/N2686796_3.jpg','/MLSMULTIPHOTOS/FULL/4/796/N2686796_4.jpg','/MLSMULTIPHOTOS/FULL/5/796/N2686796_5.jpg','/MLSMULTIPHOTOS/FULL/6/796/N2686796_6.jpg','/MLSMULTIPHOTOS/FULL/7/796/N2686796_7.jpg','/MLSMULTIPHOTOS/FULL/8/796/N2686796_8.jpg','/MLSMULTIPHOTOS/FULL/9/796/N2686796_9.jpg');f._commArray = new Array('','','','','','','','','');f.alt=f._commArray[0];f._loadedArray = new Array(9);f._loadedArray[0] = new Image();f._pixArray[0] = 'noLongerNeeded';f._loadedArray[0].src = f.src;imageList += 'picN2686796,';RightOverImg.src = '/images/right_over.gif';LeftOverImg.src = '/images/left_over.gif';LeftImg.src = '/images/left.gif';RightImg.src ='/images/right.gif';</script><img src="/images/right.gif" style="position: absolute; left:212; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = RightOverImg.src;" OnMouseOut="this.src=RightImg.src;" border=0 WIDTH=13 HEIGHT=12 OnClick="swapPhoto(document.all.picN2686796, 1);"><img src="/images/left.gif" style="position: absolute; left:199; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = LeftOverImg.src;" OnMouseOut="this.src=LeftImg.src;" border=0 WIDTH=13 HEIGHT=12 onClick="swapPhoto(document.all.picN2686796, -1);"></div></td>
+		<td colspan="2" height="100%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="2"><font style="font: bold 9pt">16 Martell Gate&nbsp;&nbsp;</font></td>
+					<td><font style="font: bold 9pt">$454,888&nbsp;For&nbsp;Sale</font></td>
+				</tr>
+				<tr>
+					<td colspan="3"><font style="font: bold 8pt">Aurora, Ontario L4G0C4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;York&nbsp;&nbsp;&nbsp;&nbsp;Bayview Northeast</font></td>
+				</tr>
+				<tr>
+					<td width="71%" valign="top"><font style="font: bold 8pt">Pt Blk50, Pl65M3850,Pt15816,Pl65R2 9173 Aurora</font></td>
+			
+					<th width="10%"><font style="font: bold 8pt">Taxes:</font></th>
+					<td width="19%"><font style="font: bold 8pt">$3,431.81/2012</font></td>
+			
+				</tr>
+			</table>
+			<table width="100%" cellspacing="0">	
+				<tr>
+					<th width="8%"><font style="font: bold 8pt">SPIS:</font></th>
+					<td width="62%"><font style="font: bold 8pt">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;-&nbsp;</font></td>
+					<th width="18%"><font style="font: bold 8pt">Last Status:</font></th>
+					<td width="12%"><font style="font: bold 8pt">New</font></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="2" height="100%">
+			<table width="100%" height="100%" border="0" cellspacing="0">
+				<tr>
+					<td width="40%" colspan="2">Att/Row/Twnhouse</td>
+					<th width="18%">Fronting On:</th>
+					<td width="18%">N</td>
+					<th width="17%">Rooms:</th>
+					<td width="7%">7+1</td>
+				</tr>
+				<tr>
+					<td colspan="2">2-Storey</td>
+					<th>Acreage:</th>
+					<td>&lt; .49</td>
+					<th>Bedrooms:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th width="18%">Dir/Cross St:</th>
+					<td colspan="3">Bayview/Wellington</td>
+					<th>Washrooms:</th>
+					<td>4</td>
+				</tr>
+				<tr>
+					<th>Lot:</th>
+					<td colspan="3">25X104&nbsp;Feet</td>
+					<td colspan="2" rowspan="2">
+						1x2xMain, 2x4xUpper, 1x3xLower
+					</td>
+				</tr>
+				<tr>
+					<th>Lot Irreg:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th width="5%">MLS#:</th>
+					<td width="15%">
+						N2686796&nbsp;
+						
+					</td>
+			
+					<th width="11%">&nbsp;</th>
+					<td width="10%">&nbsp;</td>
+		
+					<th width="10%">Possession:</th>
+					<td width="18%">60 Days</td>
+					<th width="6%">PIN#:</th>
+					<td width="15%">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="35%">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="33%">Kitchens:</th>
+					<td width="67%" colspan="3">1</td>
+				</tr>
+				<tr>
+					<th>Fam Rm:</th>
+					<td colspan="3">Y</td>
+				</tr>
+				<tr>
+					<th>Basement:</th>
+					<td colspan="3">Finished</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Fireplace/Stv:</th>
+					<td colspan="3">Y</td>
+				</tr>
+				<tr>
+					<th>Heat:</th>
+					<td colspan="3">Gas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">Forced Air</td>
+				</tr>
+				<tr>
+					<th>A/C:</th>
+					<td>Central Air</td>
+					<th>Central Vac:</th>
+					<td>Y</td>
+				</tr>
+				<tr>
+					<th>Apx Age:</th>
+					<td colspan="3">0-5</td>
+				</tr>
+				<tr>
+					<th>Apx Sqft:</th>
+					<td colspan="3">1500-2000</td>
+				</tr>
+			
+				<tr>
+					<th>Assessment:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+	
+				<tr>
+					<th>Addl Mo Fee:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Elev/Lift:</th>
+					<td>N</td>
+					<th>Laundry Lev:</th>
+					<td>Lower</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>Phys Hdcap-Equip:</th>
+						<td>N</td>
+					</tr>
+					</table>
+					</td>
+				</tr>	
+			</table>
+		</td>
+		<td width="31%" bgcolor="#FFFFFF">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="47%">Exterior:</th>
+					<td width="53%">Brick</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Drive:</th>
+					<td>Available</td>
+				</tr>
+				<tr>
+					<th>GarType/Spaces:</th>
+					<td>Attached/1</td>
+				</tr>
+				<tr>
+					<th>Parking Spaces:</th>
+					<td>2</td>
+				</tr>
+				<tr>
+					<th>UFFI:</th>
+					<td>No</td>
+				</tr>
+				<tr>
+					<th>Pool:</th>
+					<td>None</td>
+				</tr>
+	
+					<tr>
+						<td colspan="4">Arts Centre</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Library</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Park</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Public Transit</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Rec Centre</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">School</td>
+					</tr>
+		
+			</table>
+		</td>
+		
+		<td width="34%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th>Zoning:</th>
+					<td colspan="3">Single Family Reside</td>
+				</tr>
+				<tr>
+					<th width="35%">Cable TV:</th>
+					<td width="10%">Y</td>
+					<th width="20%">Hydro:</th>
+					<td width="35%">Y</td>
+				</tr>
+				<tr>
+					<th>Gas:</th>
+					<td>Y</td>
+					<th>Phone:</th>
+					<td>Y</td>
+				</tr>
+				<tr>
+					<th>Water:</th>
+					<td colspan="3">Municipal</td>
+				</tr>
+				<tr>
+					<th>Water Supply:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Sewers:</th>
+					<td colspan="3">Sewers</td>
+				</tr>
+				<tr>
+					<th>Spec Desig:</th>
+					<td colspan="3">
+					Unknown&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<th>Farm/Agr:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Waterfront:</th>
+					<td colspan="3">None</td>
+				</tr>
+				<tr>
+					<th>Retirement:</th>
+					<td colspan="3">N</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>			</table>
+		</td>
+	
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				
+						<tr>
+							<td width="1%"><font color="#000000"><u>#</u></font></td>
+							<td width="10%"><font color="#000000"><u>Room</u></font></td>
+							<td width="8%"><font color="#000000"><u>Level</u></font></td>
+							<td width="13%" colspan="3" align="center"><font color="#000000"><u>Dimensions (m)</u></font></td>
+							<td width="4%">&nbsp;</td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+						</tr>
+				
+						<tr>
+							<td><font color="#000000">1</font></td>
+							<td>Great Rm</td>
+							<td>Main</td>
+							<td width="6%" align="left">5.8</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">4.1</td>
+							<td></td>
+							<td>Hardwood Floor</td>
+							<td>Gas Fireplace</td>
+							<td>Open Concept</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">2</font></td>
+							<td>Kitchen</td>
+							<td>Main</td>
+							<td width="6%" align="left">3.25</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.25</td>
+							<td></td>
+							<td>Ceramic Floor</td>
+							<td>California Shutters</td>
+							<td>Updated</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">3</font></td>
+							<td>Breakfast</td>
+							<td>Main</td>
+							<td width="6%" align="left">3.25</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.25</td>
+							<td></td>
+							<td>Ceramic Floor</td>
+							<td>Combined W/Dining</td>
+							<td>W/O To Patio</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">4</font></td>
+							<td>Master</td>
+							<td>2nd</td>
+							<td width="6%" align="left">5.75</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">5.1</td>
+							<td></td>
+							<td>Hardwood Floor</td>
+							<td>W/I Closet</td>
+							<td>4 Pc Ensuite</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">5</font></td>
+							<td>2nd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">4.29</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.87</td>
+							<td></td>
+							<td>Hardwood Floor</td>
+							<td>Closet</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">6</font></td>
+							<td>3rd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">3.57</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.75</td>
+							<td></td>
+							<td>Hardwood Floor</td>
+							<td>Closet</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">7</font></td>
+							<td>Rec</td>
+							<td>Bsmt</td>
+							<td width="6%" align="left">5.5</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.27</td>
+							<td></td>
+							<td>Ceramic Floor</td>
+							<td>Open Concept</td>
+							<td>&nbsp;</td>
+						</tr>
+						
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellspacing="0">
+			
+				<tr>
+					<td><b>Remarks For Clients:</b> Sparkling Townhome Charming Neutral Decor, Move-In Ready, 4-5 Yrs.Old, Fabulous Neighborhood, Close To All Amenities, Viva, Go, Easy Access To 404. A Must See. Don't Miss This One. Hardwood Floors, Open Concept, Fenced Backyard W/Gas Hook-Up For B.B.Q, Includes All Fixtures And Appliances, Except  Freezer In Basement. Freehold/No Maintenance Fees</td>
+				</tr>
+				
+				<tr>
+					<td><b>Extras:</b> All Fixtures, All Appliances - Dishwasher, Oven, Fridge, Fridge In Basement All Inc. Except Deep Freezer In Basement. Shutters All Window Covering Included. Washer &amp; Dryer Included. Hwt-Rental  Central Vacuum - Attachments Not Included.</td>
+				</tr>
+			
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="3">JOHNSTON &amp; GREEN REAL ESTATE LTD., BROKERAGE&nbsp;&nbsp;416-429-5118&nbsp;&nbsp;<b>Fax:</b>&nbsp;416-429-1013</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+								<br><table width="650">
+  <tr>
+        <td align="center">
+			<font style="font:9px" color="black">
+			Toronto Real Estate Board (TREB) assumes no responsibility for the accuracy
+			of any information shown. Copyright TREB 2013
+			</font>
+		</td>
+
+  </tr>
+</table>       
+						</td>
+					</tr>		
+				</table>	
+					
+						<P style="page-break-before:always"><span style='visibility: hidden;'>-</span></P>
+					
+				<table width="100%" align="center">
+					<tr>
+						<td align="center" valign="top">
+							
+<table width="650">
+	<tr>
+		<td align="center"><font size="2"><strong> Prepared by HUIJUN XUE, Salesperson<br>REAL ONE REALTY INC., BROKERAGE<br><font size=1>7225 Woodbine Ave, Unit 1, Markham, ON L3R1A3<br>905-480-1011<br>7/10/2013 </font></strong></font></td>
+	</tr>
+</table>				
+
+							<br>
+							<table width="650" border="1" bordercolor="#909090" bgcolor="#FFFFFF" cellspacing="0">
+	<tr>
+		<td rowspan="2" valign="top" bgcolor="#ffffff"><!-- GetPHOTO(Full_P) --><div id="divN2687517" style="position: relative; margin: 0; padding: 0; border: 0; background-color: #fcfcfc;" height="100%"><img id="picN2687517" OnClick="" style="position: relative; cursor: ;" OnError="this.src = ErrorImg.src;" height="168" width="225" src="/MLSMULTIPHOTOS/FULL/1/517/N2687517.jpg" alt="MLS# N2687517"><script language="JavaScript">var f = document.all['picN2687517'];f._mlnum = 'N2687517';f._current = 1;f._max = 7;f._pixArray = new Array('/MLSPHOTOS/FULL/1/517/N26875171.jpg','/MLSMULTIPHOTOS/FULL/2/517/N2687517_2.jpg','/MLSMULTIPHOTOS/FULL/3/517/N2687517_3.jpg','/MLSMULTIPHOTOS/FULL/4/517/N2687517_4.jpg','/MLSMULTIPHOTOS/FULL/5/517/N2687517_5.jpg','/MLSMULTIPHOTOS/FULL/6/517/N2687517_6.jpg','/MLSMULTIPHOTOS/FULL/7/517/N2687517_7.jpg');f._commArray = new Array('','','','','','','');f.alt=f._commArray[0];f._loadedArray = new Array(7);f._loadedArray[0] = new Image();f._pixArray[0] = 'noLongerNeeded';f._loadedArray[0].src = f.src;imageList += 'picN2687517,';RightOverImg.src = '/images/right_over.gif';LeftOverImg.src = '/images/left_over.gif';LeftImg.src = '/images/left.gif';RightImg.src ='/images/right.gif';</script><img src="/images/right.gif" style="position: absolute; left:212; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = RightOverImg.src;" OnMouseOut="this.src=RightImg.src;" border=0 WIDTH=13 HEIGHT=12 OnClick="swapPhoto(document.all.picN2687517, 1);"><img src="/images/left.gif" style="position: absolute; left:199; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = LeftOverImg.src;" OnMouseOut="this.src=LeftImg.src;" border=0 WIDTH=13 HEIGHT=12 onClick="swapPhoto(document.all.picN2687517, -1);"></div></td>
+		<td colspan="2" height="100%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="2"><font style="font: bold 9pt">893 Bur Oak Ave&nbsp;&nbsp;</font></td>
+					<td><font style="font: bold 9pt">$468,000&nbsp;For&nbsp;Sale</font></td>
+				</tr>
+				<tr>
+					<td colspan="3"><font style="font: bold 8pt">Markham, Ontario L6E1W8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;York&nbsp;&nbsp;&nbsp;&nbsp;Wismer</font></td>
+				</tr>
+				<tr>
+					<td width="71%" valign="top"><font style="font: bold 8pt">Pt Bl 18,Pl 65M3671Pts 9,10,11,12&amp;13,65R27530</font></td>
+			
+					<th width="10%"><font style="font: bold 8pt">Taxes:</font></th>
+					<td width="19%"><font style="font: bold 8pt">$2,743.63/2012</font></td>
+			
+				</tr>
+			</table>
+			<table width="100%" cellspacing="0">	
+				<tr>
+					<th width="8%"><font style="font: bold 8pt">SPIS:</font></th>
+					<td width="62%"><font style="font: bold 8pt">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;351-35-S</font></td>
+					<th width="18%"><font style="font: bold 8pt">Last Status:</font></th>
+					<td width="12%"><font style="font: bold 8pt">New</font></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="2" height="100%">
+			<table width="100%" height="100%" border="0" cellspacing="0">
+				<tr>
+					<td width="40%" colspan="2">Att/Row/Twnhouse</td>
+					<th width="18%">Fronting On:</th>
+					<td width="18%">S</td>
+					<th width="17%">Rooms:</th>
+					<td width="7%">3</td>
+				</tr>
+				<tr>
+					<td colspan="2">2-Storey</td>
+					<th>Acreage:</th>
+					<td>&nbsp;</td>
+					<th>Bedrooms:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th width="18%">Dir/Cross St:</th>
+					<td colspan="3">Mccowan /Bur Oak</td>
+					<th>Washrooms:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th>Lot:</th>
+					<td colspan="3">19X105.71&nbsp;Feet</td>
+					<td colspan="2" rowspan="2">
+						1x2xMain, 2x3x2nd
+					</td>
+				</tr>
+				<tr>
+					<th>Lot Irreg:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th width="5%">MLS#:</th>
+					<td width="15%">
+						N2687517&nbsp;
+						
+					</td>
+			
+					<th width="11%">&nbsp;</th>
+					<td width="10%">&nbsp;</td>
+		
+					<th width="10%">Possession:</th>
+					<td width="18%">90</td>
+					<th width="6%">PIN#:</th>
+					<td width="15%">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="35%">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="33%">Kitchens:</th>
+					<td width="67%" colspan="3">1</td>
+				</tr>
+				<tr>
+					<th>Fam Rm:</th>
+					<td colspan="3">Y</td>
+				</tr>
+				<tr>
+					<th>Basement:</th>
+					<td colspan="3">Full</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">Unfinished</td>
+				</tr>
+				<tr>
+					<th>Fireplace/Stv:</th>
+					<td colspan="3">N</td>
+				</tr>
+				<tr>
+					<th>Heat:</th>
+					<td colspan="3">Gas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">Forced Air</td>
+				</tr>
+				<tr>
+					<th>A/C:</th>
+					<td>Central Air</td>
+					<th>Central Vac:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Apx Age:</th>
+					<td colspan="3">6-15</td>
+				</tr>
+				<tr>
+					<th>Apx Sqft:</th>
+					<td colspan="3">1500-2000</td>
+				</tr>
+			
+				<tr>
+					<th>Assessment:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+	
+				<tr>
+					<th>Addl Mo Fee:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Elev/Lift:</th>
+					<td>&nbsp;</td>
+					<th>Laundry Lev:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>Phys Hdcap-Equip:</th>
+						<td>&nbsp;</td>
+					</tr>
+					</table>
+					</td>
+				</tr>	
+			</table>
+		</td>
+		<td width="31%" bgcolor="#FFFFFF">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="47%">Exterior:</th>
+					<td width="53%">Brick</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Drive:</th>
+					<td>Private</td>
+				</tr>
+				<tr>
+					<th>GarType/Spaces:</th>
+					<td>Detached/1</td>
+				</tr>
+				<tr>
+					<th>Parking Spaces:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th>UFFI:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Pool:</th>
+					<td>None</td>
+				</tr>
+	
+					<tr>
+						<td colspan="4">Clear View</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Park</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">School</td>
+					</tr>
+		
+			</table>
+		</td>
+		
+		<td width="34%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th>Zoning:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th width="35%">Cable TV:</th>
+					<td width="10%">&nbsp;</td>
+					<th width="20%">Hydro:</th>
+					<td width="35%">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Gas:</th>
+					<td>&nbsp;</td>
+					<th>Phone:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Water:</th>
+					<td colspan="3">Municipal</td>
+				</tr>
+				<tr>
+					<th>Water Supply:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Sewers:</th>
+					<td colspan="3">Sewers</td>
+				</tr>
+				<tr>
+					<th>Spec Desig:</th>
+					<td colspan="3">
+					Unknown&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<th>Farm/Agr:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Waterfront:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Retirement:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>			</table>
+		</td>
+	
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				
+						<tr>
+							<td width="1%"><font color="#000000"><u>#</u></font></td>
+							<td width="10%"><font color="#000000"><u>Room</u></font></td>
+							<td width="8%"><font color="#000000"><u>Level</u></font></td>
+							<td width="13%" colspan="3" align="center"><font color="#000000"><u>Dimensions (m)</u></font></td>
+							<td width="4%">&nbsp;</td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+						</tr>
+				
+						<tr>
+							<td><font color="#000000">1</font></td>
+							<td>Living</td>
+							<td>Main</td>
+							<td width="6%" align="left">12.83</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">11.48</td>
+							<td></td>
+							<td>Combined W/Dining</td>
+							<td>Halogen Lighting</td>
+							<td>O/Looks Ravine</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">2</font></td>
+							<td>Dining</td>
+							<td>Main</td>
+							<td width="6%" align="left">12.83</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">11.48</td>
+							<td></td>
+							<td>Combined W/Dining</td>
+							<td>Hardwood Floor</td>
+							<td>Open Concept</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">3</font></td>
+							<td>Kitchen</td>
+							<td>Main</td>
+							<td width="6%" align="left">9.97</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">10.33</td>
+							<td></td>
+							<td>Ceramic Floor</td>
+							<td>Open Concept</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">4</font></td>
+							<td>Breakfast</td>
+							<td>Main</td>
+							<td width="6%" align="left">9.51</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">6.99</td>
+							<td></td>
+							<td>Ceramic Floor</td>
+							<td>Hardwood Floor</td>
+							<td>French Doors</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">5</font></td>
+							<td>Family</td>
+							<td>Main</td>
+							<td width="6%" align="left">10.99</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">12.5</td>
+							<td></td>
+							<td>Open Concept</td>
+							<td>5 Pc Ensuite</td>
+							<td>Large Window</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">6</font></td>
+							<td>Master</td>
+							<td>2nd</td>
+							<td width="6%" align="left">14.01</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">12.01</td>
+							<td></td>
+							<td>W/I Closet</td>
+							<td>Broadloom</td>
+							<td>Picture Window</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">7</font></td>
+							<td>2nd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">8.83</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">10.66</td>
+							<td></td>
+							<td>Large Closet</td>
+							<td>Broadloom</td>
+							<td>Window</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">8</font></td>
+							<td>3rd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">8.83</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">10.33</td>
+							<td></td>
+							<td>Large Closet</td>
+							<td>&nbsp;</td>
+							<td>Window</td>
+						</tr>
+						
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellspacing="0">
+			
+				<tr>
+					<td><b>Remarks For Clients:</b> Beautiful Spacious &amp; Bright Freehold Townhouse In High Demand Markham Area ,Facing Beautiful Treed Conservation, 9 Feet Ceiling, Open Concept , Freshly Paint &amp; Hardwood Floor On Main Floor, Parking For 3 Cars. Ontario's Top School Zone:Bur Oak Secondary School,Wismer P/S, Sam Chapman P/S &amp; San Lorenzo Catholic School. Near Go Station, Steps To Schools, Bus Stop, Church, Park, And Shopping Plaza. A Great Place To Raise A Family!</td>
+				</tr>
+				
+				<tr>
+					<td><b>Extras:</b> All Elf's, All Window Coverings,S/S Fridge, S/S Stove,S/S Dishwasher, Washer, Dryer, Cac, Garage Door Opener &amp; Remote</td>
+				</tr>
+			
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="3">HOMELIFE BEST CHOICE REALTY, BROKERAGE&nbsp;&nbsp;(416)590-2888&nbsp;&nbsp;<b>Fax:</b>&nbsp;1-866-290-6516</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+								<br><table width="650">
+  <tr>
+        <td align="center">
+			<font style="font:9px" color="black">
+			Toronto Real Estate Board (TREB) assumes no responsibility for the accuracy
+			of any information shown. Copyright TREB 2013
+			</font>
+		</td>
+
+  </tr>
+</table>       
+						</td>
+					</tr>		
+				</table>	
+					
+						<P style="page-break-before:always"><span style='visibility: hidden;'>-</span></P>
+					
+				<table width="100%" align="center">
+					<tr>
+						<td align="center" valign="top">
+							
+<table width="650">
+	<tr>
+		<td align="center"><font size="2"><strong> Prepared by HUIJUN XUE, Salesperson<br>REAL ONE REALTY INC., BROKERAGE<br><font size=1>7225 Woodbine Ave, Unit 1, Markham, ON L3R1A3<br>905-480-1011<br>7/10/2013 </font></strong></font></td>
+	</tr>
+</table>				
+
+							<br>
+							<table width="650" border="1" bordercolor="#909090" bgcolor="#FFFFFF" cellspacing="0">
+	<tr>
+		<td rowspan="2" valign="top" bgcolor="#ffffff"><!-- GetPHOTO(Full_P) --><div id="divN2687175" style="position: relative; margin: 0; padding: 0; border: 0; background-color: #fcfcfc;" height="100%"><img id="picN2687175" OnClick="" style="position: relative; cursor: ;" OnError="this.src = ErrorImg.src;" height="168" width="225" src="/MLSMULTIPHOTOS/FULL/1/175/N2687175.jpg" alt="MLS# N2687175"><script language="JavaScript">var f = document.all['picN2687175'];f._mlnum = 'N2687175';f._current = 1;f._max = 7;f._pixArray = new Array('/MLSPHOTOS/FULL/1/175/N26871751.jpg','/MLSMULTIPHOTOS/FULL/2/175/N2687175_2.jpg','/MLSMULTIPHOTOS/FULL/3/175/N2687175_3.jpg','/MLSMULTIPHOTOS/FULL/4/175/N2687175_4.jpg','/MLSMULTIPHOTOS/FULL/5/175/N2687175_5.jpg','/MLSMULTIPHOTOS/FULL/6/175/N2687175_6.jpg','/MLSMULTIPHOTOS/FULL/7/175/N2687175_7.jpg');f._commArray = new Array('','','','','','','');f.alt=f._commArray[0];f._loadedArray = new Array(7);f._loadedArray[0] = new Image();f._pixArray[0] = 'noLongerNeeded';f._loadedArray[0].src = f.src;imageList += 'picN2687175,';RightOverImg.src = '/images/right_over.gif';LeftOverImg.src = '/images/left_over.gif';LeftImg.src = '/images/left.gif';RightImg.src ='/images/right.gif';</script><img src="/images/right.gif" style="position: absolute; left:212; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = RightOverImg.src;" OnMouseOut="this.src=RightImg.src;" border=0 WIDTH=13 HEIGHT=12 OnClick="swapPhoto(document.all.picN2687175, 1);"><img src="/images/left.gif" style="position: absolute; left:199; top: 156; z-index: 100; cursor: hand;" OnMouseOver="this.src = LeftOverImg.src;" OnMouseOut="this.src=LeftImg.src;" border=0 WIDTH=13 HEIGHT=12 onClick="swapPhoto(document.all.picN2687175, -1);"></div></td>
+		<td colspan="2" height="100%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="2"><font style="font: bold 9pt">71 Puccini Dr&nbsp;3</font></td>
+					<td><font style="font: bold 9pt">$485,000&nbsp;For&nbsp;Sale</font></td>
+				</tr>
+				<tr>
+					<td colspan="3"><font style="font: bold 8pt">Richmond Hill, Ontario L4E4X8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;York&nbsp;&nbsp;&nbsp;&nbsp;Oak Ridges</font></td>
+				</tr>
+				<tr>
+					<td width="71%" valign="top"><font style="font: bold 8pt">T Lt 9,Pl M807, Pt 3, 65R27493</font></td>
+			
+					<th width="10%"><font style="font: bold 8pt">Taxes:</font></th>
+					<td width="19%"><font style="font: bold 8pt">$3,150.75/2013</font></td>
+			
+				</tr>
+			</table>
+			<table width="100%" cellspacing="0">	
+				<tr>
+					<th width="8%"><font style="font: bold 8pt">SPIS:</font></th>
+					<td width="62%"><font style="font: bold 8pt">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;-&nbsp;</font></td>
+					<th width="18%"><font style="font: bold 8pt">Last Status:</font></th>
+					<td width="12%"><font style="font: bold 8pt">New</font></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="2" height="100%">
+			<table width="100%" height="100%" border="0" cellspacing="0">
+				<tr>
+					<td width="40%" colspan="2">Att/Row/Twnhouse</td>
+					<th width="18%">Fronting On:</th>
+					<td width="18%">S</td>
+					<th width="17%">Rooms:</th>
+					<td width="7%">7</td>
+				</tr>
+				<tr>
+					<td colspan="2">3-Storey</td>
+					<th>Acreage:</th>
+					<td>&nbsp;</td>
+					<th>Bedrooms:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th width="18%">Dir/Cross St:</th>
+					<td colspan="3">Bathurst And King</td>
+					<th>Washrooms:</th>
+					<td>4</td>
+				</tr>
+				<tr>
+					<th>Lot:</th>
+					<td colspan="3">20X70&nbsp;Feet</td>
+					<td colspan="2" rowspan="2">
+						1x2xGround, 1x2xMain, 1x4x2nd, 1x4x2nd
+					</td>
+				</tr>
+				<tr>
+					<th>Lot Irreg:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th width="5%">MLS#:</th>
+					<td width="15%">
+						N2687175&nbsp;
+						
+					</td>
+			
+					<th width="11%">&nbsp;</th>
+					<td width="10%">&nbsp;</td>
+		
+					<th width="10%">Possession:</th>
+					<td width="18%">60 Days /Tba</td>
+					<th width="6%">PIN#:</th>
+					<td width="15%">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="35%">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="33%">Kitchens:</th>
+					<td width="67%" colspan="3">1</td>
+				</tr>
+				<tr>
+					<th>Fam Rm:</th>
+					<td colspan="3">Y</td>
+				</tr>
+				<tr>
+					<th>Basement:</th>
+					<td colspan="3">Fin W/O</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Fireplace/Stv:</th>
+					<td colspan="3">N</td>
+				</tr>
+				<tr>
+					<th>Heat:</th>
+					<td colspan="3">Gas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">Forced Air</td>
+				</tr>
+				<tr>
+					<th>A/C:</th>
+					<td>Central Air</td>
+					<th>Central Vac:</th>
+					<td>Y</td>
+				</tr>
+				<tr>
+					<th>Apx Age:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Apx Sqft:</th>
+					<td colspan="3">1500-2000</td>
+				</tr>
+			
+				<tr>
+					<th>Assessment:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+	
+				<tr>
+					<th>Addl Mo Fee:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Elev/Lift:</th>
+					<td>&nbsp;</td>
+					<th>Laundry Lev:</th>
+					<td>Lower</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>Phys Hdcap-Equip:</th>
+						<td>&nbsp;</td>
+					</tr>
+					</table>
+					</td>
+				</tr>	
+			</table>
+		</td>
+		<td width="31%" bgcolor="#FFFFFF">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="47%">Exterior:</th>
+					<td width="53%">Brick</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Drive:</th>
+					<td>Private</td>
+				</tr>
+				<tr>
+					<th>GarType/Spaces:</th>
+					<td>Attached/1</td>
+				</tr>
+				<tr>
+					<th>Parking Spaces:</th>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th>UFFI:</th>
+					<td>No</td>
+				</tr>
+				<tr>
+					<th>Pool:</th>
+					<td>None</td>
+				</tr>
+	
+					<tr>
+						<td colspan="4">Park</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Public Transit</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">School</td>
+					</tr>
+		
+			</table>
+		</td>
+		
+		<td width="34%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th>Zoning:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th width="35%">Cable TV:</th>
+					<td width="10%">&nbsp;</td>
+					<th width="20%">Hydro:</th>
+					<td width="35%">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Gas:</th>
+					<td>&nbsp;</td>
+					<th>Phone:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Water:</th>
+					<td colspan="3">Municipal</td>
+				</tr>
+				<tr>
+					<th>Water Supply:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Sewers:</th>
+					<td colspan="3">Sewers</td>
+				</tr>
+				<tr>
+					<th>Spec Desig:</th>
+					<td colspan="3">
+					Unknown&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<th>Farm/Agr:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Waterfront:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Retirement:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>			</table>
+		</td>
+	
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				
+						<tr>
+							<td width="1%"><font color="#000000"><u>#</u></font></td>
+							<td width="10%"><font color="#000000"><u>Room</u></font></td>
+							<td width="8%"><font color="#000000"><u>Level</u></font></td>
+							<td width="13%" colspan="3" align="center"><font color="#000000"><u>Dimensions (m)</u></font></td>
+							<td width="4%">&nbsp;</td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+						</tr>
+				
+						<tr>
+							<td><font color="#000000">1</font></td>
+							<td>Living</td>
+							<td>Main</td>
+							<td width="6%" align="left">7.16</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.22</td>
+							<td></td>
+							<td>Combined W/Dining</td>
+							<td>Hardwood Floor</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">2</font></td>
+							<td>Dining</td>
+							<td>Main</td>
+							<td width="6%" align="left">7.16</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.22</td>
+							<td></td>
+							<td>Combined W/Living</td>
+							<td>Hardwood Floor</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">3</font></td>
+							<td>Kitchen</td>
+							<td>Main</td>
+							<td width="6%" align="left">3.52</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.74</td>
+							<td></td>
+							<td>Modern Kitchen</td>
+							<td>Ceramic Floor</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">4</font></td>
+							<td>Breakfast</td>
+							<td>Main</td>
+							<td width="6%" align="left">2.95</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.79</td>
+							<td></td>
+							<td>W/O To Balcony</td>
+							<td>Ceramic Floor</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">5</font></td>
+							<td>Master</td>
+							<td>2nd</td>
+							<td width="6%" align="left">4.8</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.25</td>
+							<td></td>
+							<td>4 Pc Ensuite</td>
+							<td>Broadloom</td>
+							<td>W/I Closet</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">6</font></td>
+							<td>2nd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">3.49</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.97</td>
+							<td></td>
+							<td>Double Closet</td>
+							<td>Broadloom</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">7</font></td>
+							<td>3rd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">3.52</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.74</td>
+							<td></td>
+							<td>Double Closet</td>
+							<td>Broadloom</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">8</font></td>
+							<td>Rec</td>
+							<td>Ground</td>
+							<td width="6%" align="left">4.41</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.1</td>
+							<td></td>
+							<td>2 Pc Bath</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">9</font></td>
+							<td>Laundry</td>
+							<td>Ground</td>
+							<td width="6%" align="left">&nbsp;</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">&nbsp;</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellspacing="0">
+			
+				<tr>
+					<td><b>Remarks For Clients:</b> Spacious 3 Bedroom In Desirable Bathurst And King Area With Seprate Entrance Finished Basement.Unique Floor Plan,9'Ceiling,Hardwood Floor On Main Level.Modern Open Concept And Traditional Interior Design.Magnificent Architectural Columns.Ceramic Floor Kitchen W/Breakfast Area.Private Backyard ,No Neighbours Behind .Low Maintenance Fee.Wetland Park Near By.</td>
+				</tr>
+				
+				<tr>
+					<td><b>Extras:</b> Fridge (In Breakfast Area)Stove,Washer, Dryer,B/I Dishwasher,Central Vac .Excl:Fridge(In Kitchen),Microwave</td>
+				</tr>
+			
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="3">RE/MAX GOLDENWAY REALTY INC., BROKERAGE&nbsp;&nbsp;(416) 299-4488&nbsp;&nbsp;<b>Fax:</b>&nbsp;(905) 707-0008</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+								<br><table width="650">
+  <tr>
+        <td align="center">
+			<font style="font:9px" color="black">
+			Toronto Real Estate Board (TREB) assumes no responsibility for the accuracy
+			of any information shown. Copyright TREB 2013
+			</font>
+		</td>
+
+  </tr>
+</table>       
+						</td>
+					</tr>		
+				</table>	
+					
+						<P style="page-break-before:always"><span style='visibility: hidden;'>-</span></P>
+					
+				<table width="100%" align="center">
+					<tr>
+						<td align="center" valign="top">
+							
+<table width="650">
+	<tr>
+		<td align="center"><font size="2"><strong> Prepared by HUIJUN XUE, Salesperson<br>REAL ONE REALTY INC., BROKERAGE<br><font size=1>7225 Woodbine Ave, Unit 1, Markham, ON L3R1A3<br>905-480-1011<br>7/10/2013 </font></strong></font></td>
+	</tr>
+</table>				
+
+							<br>
+							<table width="650" border="1" bordercolor="#909090" bgcolor="#FFFFFF" cellspacing="0">
+	<tr>
+		<td rowspan="2" valign="top" bgcolor="#ffffff"><!-- GetPHOTO(Full_P) --><div id="divN2687407" style="position: relative; margin: 0; padding: 0; border: 0; background-color: #fcfcfc;" height="100%"><img id="picN2687407" OnClick="" style="position: relative; cursor: ;" OnError="this.src = ErrorImg.src;" height="168" width="225" src="/MLSMULTIPHOTOS/FULL/1/407/N2687407.jpg" alt="MLS# N2687407"></div></td>
+		<td colspan="2" height="100%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="2"><font style="font: bold 9pt">110 Goodwood Dr&nbsp;&nbsp;</font></td>
+					<td><font style="font: bold 9pt">$499,000&nbsp;For&nbsp;Sale</font></td>
+				</tr>
+				<tr>
+					<td colspan="3"><font style="font: bold 8pt">Markham, Ontario L3S2L9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;York&nbsp;&nbsp;&nbsp;&nbsp;Middlefield</font></td>
+				</tr>
+				<tr>
+					<td width="71%" valign="top"><font style="font: bold 8pt">Pl65M2527 Pt Blk 146</font></td>
+			
+					<th width="10%"><font style="font: bold 8pt">Taxes:</font></th>
+					<td width="19%"><font style="font: bold 8pt">$2,834/2012</font></td>
+			
+				</tr>
+			</table>
+			<table width="100%" cellspacing="0">	
+				<tr>
+					<th width="8%"><font style="font: bold 8pt">SPIS:</font></th>
+					<td width="62%"><font style="font: bold 8pt">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;356-34-Z</font></td>
+					<th width="18%"><font style="font: bold 8pt">Last Status:</font></th>
+					<td width="12%"><font style="font: bold 8pt">New</font></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="2" height="100%">
+			<table width="100%" height="100%" border="0" cellspacing="0">
+				<tr>
+					<td width="40%" colspan="2">Detached</td>
+					<th width="18%">Fronting On:</th>
+					<td width="18%">W</td>
+					<th width="17%">Rooms:</th>
+					<td width="7%">6+4</td>
+				</tr>
+				<tr>
+					<td colspan="2">2-Storey</td>
+					<th>Acreage:</th>
+					<td>&nbsp;</td>
+					<th>Bedrooms:</th>
+					<td>3+2</td>
+				</tr>
+				<tr>
+					<th width="18%">Dir/Cross St:</th>
+					<td colspan="3">Mccowan/Denison</td>
+					<th>Washrooms:</th>
+					<td>3</td>
+				</tr>
+				<tr>
+					<th>Lot:</th>
+					<td colspan="3">23.23X100&nbsp;Feet</td>
+					<td colspan="2" rowspan="2">
+						1x4, 1x5, 1x2
+					</td>
+				</tr>
+				<tr>
+					<th>Lot Irreg:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th width="5%">MLS#:</th>
+					<td width="15%">
+						N2687407&nbsp;
+						
+					</td>
+			
+					<th width="11%">&nbsp;</th>
+					<td width="10%">&nbsp;</td>
+		
+					<th width="10%">Possession:</th>
+					<td width="18%">30/60/90</td>
+					<th width="6%">PIN#:</th>
+					<td width="15%">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="35%">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="33%">Kitchens:</th>
+					<td width="67%" colspan="3">2</td>
+				</tr>
+				<tr>
+					<th>Fam Rm:</th>
+					<td colspan="3">N</td>
+				</tr>
+				<tr>
+					<th>Basement:</th>
+					<td colspan="3">Apartment</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Fireplace/Stv:</th>
+					<td colspan="3">N</td>
+				</tr>
+				<tr>
+					<th>Heat:</th>
+					<td colspan="3">Gas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">Forced Air</td>
+				</tr>
+				<tr>
+					<th>A/C:</th>
+					<td>Central Air</td>
+					<th>Central Vac:</th>
+					<td>N</td>
+				</tr>
+				<tr>
+					<th>Apx Age:</th>
+					<td colspan="3">16-30</td>
+				</tr>
+				<tr>
+					<th>Apx Sqft:</th>
+					<td colspan="3">1500-2000</td>
+				</tr>
+			
+				<tr>
+					<th>Assessment:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+	
+				<tr>
+					<th>Addl Mo Fee:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Elev/Lift:</th>
+					<td>N</td>
+					<th>Laundry Lev:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>Phys Hdcap-Equip:</th>
+						<td>&nbsp;</td>
+					</tr>
+					</table>
+					</td>
+				</tr>	
+			</table>
+		</td>
+		<td width="31%" bgcolor="#FFFFFF">
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th width="47%">Exterior:</th>
+					<td width="53%">Brick</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Drive:</th>
+					<td>Private</td>
+				</tr>
+				<tr>
+					<th>GarType/Spaces:</th>
+					<td>Attached/1</td>
+				</tr>
+				<tr>
+					<th>Parking Spaces:</th>
+					<td>2</td>
+				</tr>
+				<tr>
+					<th>UFFI:</th>
+					<td>No</td>
+				</tr>
+				<tr>
+					<th>Pool:</th>
+					<td>None</td>
+				</tr>
+	
+					<tr>
+						<td colspan="4">Park</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">Public Transit</td>
+					</tr>
+		
+					<tr>
+						<td colspan="4">School</td>
+					</tr>
+		
+			</table>
+		</td>
+		
+		<td width="34%">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<th>Zoning:</th>
+					<td colspan="3">Residential</td>
+				</tr>
+				<tr>
+					<th width="35%">Cable TV:</th>
+					<td width="10%">&nbsp;</td>
+					<th width="20%">Hydro:</th>
+					<td width="35%">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Gas:</th>
+					<td>&nbsp;</td>
+					<th>Phone:</th>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Water:</th>
+					<td colspan="3">Municipal</td>
+				</tr>
+				<tr>
+					<th>Water Supply:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Sewers:</th>
+					<td colspan="3">Sewers</td>
+				</tr>
+				<tr>
+					<th>Spec Desig:</th>
+					<td colspan="3">
+					Unknown&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<th>Farm/Agr:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Waterfront:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>Retirement:</th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="3">&nbsp;</td>
+				</tr>			</table>
+		</td>
+	
+	</tr>
+	<tr bgcolor="#FFFFFF">
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				
+						<tr>
+							<td width="1%"><font color="#000000"><u>#</u></font></td>
+							<td width="10%"><font color="#000000"><u>Room</u></font></td>
+							<td width="8%"><font color="#000000"><u>Level</u></font></td>
+							<td width="13%" colspan="3" align="center"><font color="#000000"><u>Dimensions (m)</u></font></td>
+							<td width="4%">&nbsp;</td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+							<td width="22%"><font color="#000000">&nbsp;</font></td>
+						</tr>
+				
+						<tr>
+							<td><font color="#000000">1</font></td>
+							<td>Living</td>
+							<td>Ground</td>
+							<td width="6%" align="left">8.45</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.2</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>Combined W/Dining</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">2</font></td>
+							<td>Dining</td>
+							<td>Ground</td>
+							<td width="6%" align="left">8.45</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">3.2</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>Broadloom</td>
+							<td>W/O To Yard</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">3</font></td>
+							<td>Kitchen</td>
+							<td>Ground</td>
+							<td width="6%" align="left">5.3</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.86</td>
+							<td></td>
+							<td>Eat-In Kitchen</td>
+							<td>Renovated</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">4</font></td>
+							<td>Master</td>
+							<td>2nd</td>
+							<td width="6%" align="left">5.48</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">4.61</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>Semi Ensuite</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">5</font></td>
+							<td>2nd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">3.74</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.43</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>Closet</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">6</font></td>
+							<td>3rd Br</td>
+							<td>2nd</td>
+							<td width="6%" align="left">5.01</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.79</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>Closet</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">7</font></td>
+							<td>Living</td>
+							<td>Bsmt</td>
+							<td width="6%" align="left">4.81</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.84</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">8</font></td>
+							<td>Br</td>
+							<td>Bsmt</td>
+							<td width="6%" align="left">3.11</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.72</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td><font color="#000000">9</font></td>
+							<td>Kitchen</td>
+							<td>Bsmt</td>
+							<td width="6%" align="left">2.51</td>
+							<td width="1%" align="center">x</td>
+							<td width="6%" align="right">2.23</td>
+							<td></td>
+							<td>Broadloom</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellspacing="0">
+			
+				<tr>
+					<td><b>Remarks For Clients:</b> Absolutely Gorgeous 3+2Bedroom, Bright, Spacious &amp; Cozy Home. Freshly Painted W/ Brand New Custom Kitchen, Hwd Fl On Main, Enclosed Porch, Separate Entrance, Steps To Places Of Worship, Close To Public Transit, Shopping, Schools &amp; Park. Family Home Located In One Of Markham's Most Desirable Areas.</td>
+				</tr>
+				
+				<tr>
+					<td><b>Extras:</b> ..Please See Virtual Tour... No Side Walk. Direct Access To Garage From Porch, Separate Entrance To Bsmt, 2 Fridges, 2 Stoves, Dishwasher, Washer, Dryer, Central A/C, Hot Water Tank (Rented) All Window Covering &amp; Electrical Light Fixtures.</td>
+				</tr>
+			
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td colspan="3">RE/MAX VISION REALTY INC., BROKERAGE&nbsp;&nbsp;416-321-2228&nbsp;&nbsp;<b>Fax:</b>&nbsp;416-321-0002</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+								<br><table width="650">
+  <tr>
+        <td align="center">
+			<font style="font:9px" color="black">
+			Toronto Real Estate Board (TREB) assumes no responsibility for the accuracy
+			of any information shown. Copyright TREB 2013
+			</font>
+		</td>
+
+  </tr>
+</table>       
+						</td>
+					</tr>		
+				</table>	
+						
+</body>
+</html>
