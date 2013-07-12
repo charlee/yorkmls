@@ -20,3 +20,7 @@ def new_house(mls_id, user_id, address, pictures, price, data):
 
   return mls_id
   
+
+
+def parse_house_info(table):
+  pass

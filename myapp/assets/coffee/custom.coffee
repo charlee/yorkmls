@@ -3,10 +3,12 @@ $(document).ready ->
 
   $(".reject").click ->
     houseId = $(@).attr 'house_id'
-    if confirm("Are you sure to reject " + houseId + "?")
-      $.post '/j/reject/' + houseId + '/', -> location.reload()
+    $.post '/j/reject/' + houseId + '/', -> location.href = '/'
       
-        
+
+  $(".restore").click ->
+    houseId = $(@).attr 'house_id'
+    $.post '/j/restore/' + houseId + '/', -> location.reload()
 
 
   $("#update-memo").click ->

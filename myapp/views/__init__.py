@@ -109,4 +109,19 @@ def reject_house(house_id):
   return 'y'
 
     
+
+@app.route('/j/restore/<house_id>/', methods=['POST'])
+@csrf_exempt
+@j_require_login()
+def restore_house(house_id):
+
+  user_id = current_user_id()
+  user = User.ref(user_id)
+
+  if user.has_house_in_rejected(house_id):
+
+    user.restore_house(house_id)
+
+  return 'y'
+
     

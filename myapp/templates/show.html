@@ -13,7 +13,13 @@
 <textarea id="memo-input">{{ house.memo|default('',True) }}</textarea>
 <button class="btn btn-primary" id="update-memo">Update</button>
 </p>
-<p><button class="btn btn-danger reject" house_id={{ house.id }}>Reject</button></p>
+<p>
+{% if rejected %}
+<button class="btn btn-primary restore" house_id={{ house.id }}>Restore</button>
+{% else %}
+<button class="btn btn-danger reject" house_id={{ house.id }}>Reject</button>
+{% endif %}
+</p>
 </div>
 
 <hr>

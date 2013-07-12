@@ -304,11 +304,25 @@ class User(BaseHash):
     """
     rds.smove(self.KEY_HOUSES % self.id, self.KEY_REJECTED_HOUSES % self.id, house_id)
 
+  def restore_house(self, house_id):
+    """
+    Move rejected house back
+    """
+    rds.smove(self.KEY_REJECTED_HOUSES % self.id, self.KEY_HOUSES % self.id, house_id)
+    
+
   def has_house(self, house_id):
     """
     Check if user has a house
     """
     return rds.sismember(self.KEY_HOUSES % self.id, house_id)
+
+  def has_house_in_rejected(self, house_id):
+    """
+    Check if user has a house in rejected list
+    """
+    return rds.sismember(self.KEY_REJECTED_HOUSES % self.id, house_id)
+
 
   def houses(self):
     """
