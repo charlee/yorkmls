@@ -3,13 +3,21 @@ $(document).ready ->
 
   $(".reject").click ->
     houseId = $(@).attr 'house_id'
-    $.post '/j/reject/' + houseId + '/', -> location.href = '/'
+    $.post '/j/reject/' + houseId + '/', -> location.reload()
       
 
   $(".restore").click ->
     houseId = $(@).attr 'house_id'
     $.post '/j/restore/' + houseId + '/', -> location.reload()
 
+
+  $(".want-view").click ->
+    houseId = $(@).attr 'house_id'
+    $.post '/j/wantview/' + houseId + '/', -> location.reload()
+
+  $(".cancel-view").click ->
+    houseId = $(@).attr 'house_id'
+    $.post '/j/cancelview/' + houseId + '/', -> location.reload()
 
   $("#update-memo").click ->
 
@@ -21,3 +29,7 @@ $(document).ready ->
     
     $.post '/j/memo/' + houseId + '/', data
 
+
+  $(".houselink").click ->
+    $(@).closest("table").find("tr").removeClass("info")
+    $(@).closest("tr").addClass("info")

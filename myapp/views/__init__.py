@@ -20,6 +20,7 @@ def index():
 
   house_ids = user.houses()
   houses = House.mget(house_ids)
+  houses.sort(key=lambda x:x.add_date, reverse=True)
 
   context = make_context({ 'houses': houses })
 
@@ -34,6 +35,7 @@ def rejected():
 
   house_ids = user.rejected_houses()
   houses = House.mget(house_ids)
+  houses.sort(key=lambda x:x.add_date, reverse=True)
 
   context = make_context({ 'houses': houses })
 
@@ -68,6 +70,7 @@ def show(house_id):
     context = make_context({ 
       'house': house,
       'rejected': not user.has_house(house_id),
+      'wantview': house.want_view == '1',
     })
     return render_template('show.html', **context)
 
@@ -125,3 +128,34 @@ def restore_house(house_id):
   return 'y'
 
     
+@app.route('/j/wantview/<house_id>/', methods=['POST'])
+@csrf_exempt
+@j_require_login()
+def wantview_house(house_id):
+
+  user_id = current_user_id()
+  user = User.ref(user_id)
+
+  if user.has_house(house_id):
+
+    house = House.ref(house_id)
+    house.update(want_view='1')
+
+  return 'y'
+
+    
+@app.route('/j/cancelview/<house_id>/', methods=['POST'])
+@csrf_exempt
+@j_require_login()
+def cancelview_house(house_id):
+
+  user_id = current_user_id()
+  user = User.ref(user_id)
+
+  if user.has_house(house_id):
+
+    house = House.ref(house_id)
+    house.update(want_view='0')
+
+  return 'y'
+

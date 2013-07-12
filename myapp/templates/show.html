@@ -6,6 +6,10 @@
 <div class="alert alert-error">You have rejected this property.</div>
 {% endif %}
 
+{% if wantview %}
+<div class="alert alert-success">I want to view this property.</div>
+{% endif %}
+
 <div>
 <p>Address: <a href="https://maps.google.ca/maps?q={{ house.address }}" target="_blank">{{ house.address }}</a></p>
 <p>Memo:
@@ -18,6 +22,12 @@
 <button class="btn btn-primary restore" house_id={{ house.id }}>Restore</button>
 {% else %}
 <button class="btn btn-danger reject" house_id={{ house.id }}>Reject</button>
+{% endif %}
+
+{% if wantview %}
+<button class="btn cancel-view" house_id={{ house.id }}>I don't want to view anymore</button>
+{% else %}
+<button class="btn btn-success want-view" house_id={{ house.id }}>I want to view it!</button>
 {% endif %}
 </p>
 </div>

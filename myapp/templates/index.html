@@ -4,7 +4,7 @@
 
 <h3>Properties</h3>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <th>No</th>
     <th>MLS</th>
@@ -12,17 +12,19 @@
     <th>Price</th>
     <th>Added</th>
     <th>Memo</th>
+    <th>View?</th>
   </thead>
 
   <tbody>
     {% for house in houses %}
     <tr>
 	  <td>{{ loop.index }}</td>
-      <td><a href='/show/{{ house.id }}'>{{ house.id }}</a></td>
-      <td><a href='/show/{{ house.id }}'>{{ house.address }}</a> (<a href='https://maps.google.ca/maps?q={{ house.address }}' target='_blank'>map</a>)</td>
+      <td><a class='houselink' href='/show/{{ house.id }}' target='_blank'>{{ house.id }}</a></td>
+      <td><a class='houselink' href='/show/{{ house.id }}' target='_blank'>{{ house.address }}</a> (<a href='https://maps.google.ca/maps?q={{ house.address }}' target='_blank'>map</a>)</td>
       <td>{{ house.price }}</td>
       <td>{{ house.add_date|default('', True) }}</td>
       <td>{{ house.memo|default('', True) }}</td>
+      <td>{% if house.want_view %}<i class='icon-ok'></i>{% endif %}</td>
 
     </tr>
     {% endfor %}

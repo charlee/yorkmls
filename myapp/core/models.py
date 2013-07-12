@@ -216,6 +216,7 @@ class House(BaseHash):
     'data': '',         # data table for this property
     'memo': '',
     'add_date': '',
+    'want_view': '',
   }
 
   def __init__(self, id, *args, **kwargs):
@@ -326,12 +327,15 @@ class User(BaseHash):
 
   def houses(self):
     """
-    Get user's houses
+    Get user's houses, unsorted
     """
-    return rds.smembers(self.KEY_HOUSES % self.id)
+    return list(rds.smembers(self.KEY_HOUSES % self.id))
 
   def rejected_houses(self):
-    return rds.smembers(self.KEY_REJECTED_HOUSES % self.id)
+    """
+    Get user's rejected houses, unsorted
+    """
+    return list(rds.smembers(self.KEY_REJECTED_HOUSES % self.id))
 
 
   def house_count(self):
