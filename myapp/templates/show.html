@@ -19,15 +19,15 @@
 </p>
 <p>
 {% if rejected %}
-<button class="btn btn-primary restore" house_id={{ house.id }}>Restore</button>
+<button class="btn btn-primary restore" house_id='{{ house.id }}'>Restore</button>
 {% else %}
-<button class="btn btn-danger reject" house_id={{ house.id }}>Reject</button>
+<button class="btn btn-danger reject" house_id='{{ house.id }}'>Reject</button>
 {% endif %}
 
 {% if wantview %}
-<button class="btn cancel-view" house_id={{ house.id }}>I don't want to view anymore</button>
+<button class="btn cancel-view" house_id='{{ house.id }}'>I don't want to view anymore</button>
 {% else %}
-<button class="btn btn-success want-view" house_id={{ house.id }}>I want to view it!</button>
+<button class="btn btn-success want-view" house_id='{{ house.id }}'>I want to view it!</button>
 {% endif %}
 </p>
 </div>
@@ -39,6 +39,8 @@
 {% endblock %}
 
 {% block sidebar %}
+
+<button class="btn btn-danger reparse" house_id='{{ house.id }}'>Reparse</button>
 
 {% for picture in house.pictures %}
 <img src="http://www.torontomls.net{{ picture }}" />

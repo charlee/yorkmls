@@ -17,7 +17,7 @@ Define common ops for data models
 
 import re
 from myapp import rds 
-from pickle import loads
+from pickle import loads, dumps
 from datetime import datetime
 
 # Link
@@ -227,6 +227,21 @@ class House(BaseHash):
     if self.add_date:
       self.add_date = datetime.fromtimestamp(int(self.add_date)).strftime('%Y/%m/%d')
 
+
+  @classmethod
+  def new(cls, id=None, **kwargs):
+
+    if 'pictures' in kwargs:
+      kwargs['pictures'] = dumps(kwargs.get('pictures', []))
+
+    super(House, cls).new(id=id, **kwargs)
+
+  def update(self, **kwargs):
+    
+    if 'pictures' in kwargs:
+      kwargs['pictures'] = dumps(kwargs.get('pictures', []))
+
+    super(House, self).update(**kwargs)
 
   def ref_count(self):
     return rds.get(self.KEY_PIN_COUNT % self.id)

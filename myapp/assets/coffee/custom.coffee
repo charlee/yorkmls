@@ -10,6 +10,10 @@ $(document).ready ->
     houseId = $(@).attr 'house_id'
     $.post '/j/restore/' + houseId + '/', -> location.reload()
 
+  $(".reparse").click ->
+    houseId = $(@).attr 'house_id'
+    $.post '/j/reparse/' + houseId + '/', -> location.reload()
+
 
   $(".want-view").click ->
     houseId = $(@).attr 'house_id'

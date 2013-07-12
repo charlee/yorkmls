@@ -4,9 +4,10 @@ from flask import render_template, session, request, redirect
 from myapp import app
 from myapp.core.user import current_user_id, j_require_login, require_login, url_for
 from myapp.core.models import User, House
-from myapp.core.house import run_import_houses_task
+from myapp.core.house import run_import_houses_task, parse_house_info
 from .forms import MlsImportForm
 from flask.ext.csrf import csrf_exempt
+from lxml.html import fragments_fromstring
 
 from myapp.utils.common import make_context
 
@@ -158,4 +159,30 @@ def cancelview_house(house_id):
     house.update(want_view='0')
 
   return 'y'
+
+
+@app.route('/j/reparse/<house_id>/', methods=['POST'])
+@csrf_exempt
+@j_require_login()
+def reparse_house(house_id):
+
+  user_id = current_user_id()
+  user = User.ref(user_id)
+
+  if user.has_house(house_id):
+
+    house = House.get(house_id)
+    tables = fragments_fromstring(house.data)
+
+    if tables:
+
+      table = tables[0]
+    
+      mls_id, address, images, price = parse_house_info(table)
+      house.update(address=address, pictures=images, price=price)
+
+  return 'y'
+
+
+
 
