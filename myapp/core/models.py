@@ -71,7 +71,11 @@ class BaseHash:
     for field in self.fields.keys():
 
       default = self.fields[field]
-      v = kwargs.get(field, str(default))
+      v = kwargs.get(field)
+
+      # set default value
+      if v is None:
+        v = str(default)
 
       # convert str to unicode
       if type(v) == str:
@@ -217,6 +221,7 @@ class House(BaseHash):
     'memo': '',
     'add_date': '',
     'want_view': '',
+    'soldcount': 0,
   }
 
   def __init__(self, id, *args, **kwargs):
