@@ -85,7 +85,7 @@ class BaseHash:
 
   def __repr__(self):
     keys = self.fields.keys()
-    values = [getattr(self, key).encode('utf-8') for key in keys]
+    values = [str(getattr(self, key)).encode('utf-8') for key in keys]
     attrs = ', '.join('%s=%s' % pair for pair in zip(keys, values))
 
     return "<%s: id=%s, %s>" % (self.__class__.__name__, self.id, attrs)
@@ -217,11 +217,10 @@ class House(BaseHash):
     'address': '',
     'price': '',
     'pictures': '',
-    'data': '',         # data table for this property
     'memo': '',
-    'add_date': '',
+    'add_date': 0,
     'want_view': '',
-    'soldcount': 0,
+    'version_count': 0,
   }
 
   def __init__(self, id, *args, **kwargs):
@@ -239,7 +238,7 @@ class House(BaseHash):
     if 'pictures' in kwargs:
       kwargs['pictures'] = dumps(kwargs.get('pictures', []))
 
-    super(House, cls).new(id=id, **kwargs)
+    return super(House, cls).new(id=id, **kwargs)
 
   def update(self, **kwargs):
     
@@ -270,8 +269,15 @@ class House(BaseHash):
 
     # clear the counters
     p.delete(cls.KEY_REF_COUNT % id)
-    
 
+
+class HouseData(BaseHash):
+
+  fields = {
+    'data': '',
+    'add_date': 0,
+  }
+    
 
 class User(BaseHash):
 

@@ -4,7 +4,7 @@ from flask import render_template, session, request, redirect
 from myapp import app
 from myapp.core.user import current_user_id, j_require_login, require_login, url_for
 from myapp.core.models import User, House
-from myapp.core.house import run_import_houses_task, parse_house_info
+from myapp.core.house import run_import_houses_task, parse_house_info, get_house_data
 from .forms import MlsImportForm
 from flask.ext.csrf import csrf_exempt
 from lxml.html import fragments_fromstring
@@ -68,6 +68,8 @@ def show(house_id):
 
   if house:
 
+    house.data = get_house_data(house_id)
+
     context = make_context({ 
       'house': house,
       'rejected': not user.has_house(house_id),
@@ -84,15 +86,10 @@ def show(house_id):
 @j_require_login()
 def update_memo(house_id):
 
-  user_id = current_user_id()
-  user = User.ref(user_id)
+  house = House.ref(house_id)
+  memo = request.form['memo']
 
-  if user.has_house(house_id):
-
-    house = House.ref(house_id)
-    memo = request.form['memo']
-
-    house.update(memo=memo)
+  house.update(memo=memo)
 
   return 'y'
 

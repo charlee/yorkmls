@@ -36,6 +36,10 @@ def import_houses_task(user_id, url):
 
         mls_id, address, images, price = parse_house_info(table)
 
-        if not user_ref.has_house(mls_id) and not user_ref.has_house_in_rejected(mls_id):
-          new_house(mls_id, user_id, address, images, price, etree.tostring(table))
+        mls_id = new_house(mls_id, address, images, price, etree.tostring(table))
+
+        # if updated, add it to user's database
+        if mls_id != 0:
+          user_ref.restore_house(mls_id)
+          user_ref.add_house(mls_id)
 

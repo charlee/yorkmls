@@ -34,7 +34,11 @@
 
 <hr>
 
-{{ house.data|safe }}
+{% for hd in house.data %}
+<strong>Version {{ hd.id }}</strong>
+{{ hd.data|safe }}
+<hr/>
+{% endfor %}
 
 {% endblock %}
 
